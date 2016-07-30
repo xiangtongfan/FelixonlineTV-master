@@ -1,8 +1,8 @@
-# WZYonlineTV  
-很多初学者想做视频播放，但是对于Vitamio不会导入，网上版本也比较多，官方版本导入方式也不尽相同，官网也没有做一些详尽教程。  
-这个案例教大家如何将Vitamio导入。  
-首先，打开studio，新建项目，点击new---import module---导入官方的vitamio包（官方已于2016年6月16日更新至Vitamio 5.0.2）。  
-下一步很重要，大家都会不注意这一步就会出现问题。一开始导入的时候在gradle里面会出现这么几行代码： 
+# FelixonlineTV  
+有很多朋友想做视频播放，但不知如何导入Vitamio，网上版本也比较多，官方版本导入方式也不尽相同，官网也没有做一些详尽教程。  
+这个案例教大家如何将导入Vitamio。  
+首先，打开Android Studio，新建项目，点击new---import module---导入官方的vitamio包（官方已于2016年6月16日更新至Vitamio 5.0.2）。  
+下一步很重要，大家都不注意这一步就会出现问题。一开始导入的时候在gradle里面会出现这么几行代码： 
 
     compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)  
     buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION  
@@ -11,7 +11,7 @@
         minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)  
         targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)  
     }  
-在studio中不会自动将后面的Integer自动转换成版本号的，所以需要大家改这个，切记。  
+在Studio中不会自动将后面的Integer自动转换成版本号的，所以需要大家改下这个，切记。  
 我将这个版本改成了  
 
     compileSdkVersion 24  
@@ -31,7 +31,7 @@
         Vitamio.isInitialized(this);  
         setContentView(R.layout.activity_main);  
 
-另外，Vitamio5.0.2有一个坑，由于eclipse中出现的一些问题，5.0.2进行了升级，改了一些so文件和一些代码，主要在这个文件（vitamio\src\io\vov\vitamio\MediaPlayer.java）中，原来的代码是：  
+另外，Vitamio5.0.2有一个坑，由于Eclipse中出现的一些问题，5.0.2进行了升级，改了一些so文件和一些代码，主要在这个文件（vitamio\src\io\vov\vitamio\MediaPlayer.java）中，原来的代码是：  
 
         String LIB_ROOT = Vitamio.getLibraryPath();  
 而现在的代码是：  
@@ -43,4 +43,4 @@
     else{
     	LIB_ROOT = Vitamio.getLibraryPath();
     }
-所以，要想在studio中使用Vitamio5.0.2，需要先将此代码改回，这里我推荐大家直接使用我在这儿上传的Vitamio5.0.0  
+所以，要想在Studio中使用Vitamio5.0.2，需要先将此代码改回，这里我推荐大家直接使用我上传的Vitamio5.0.0  
